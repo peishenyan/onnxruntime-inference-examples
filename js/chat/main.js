@@ -178,7 +178,7 @@ function getConfig() {
     threads: 1,
     show_special: 0,
     csv: 0,
-    max_tokens: 9999,
+    max_tokens: 128,
     local: 0,
   }
   let vars = query.split("&");
