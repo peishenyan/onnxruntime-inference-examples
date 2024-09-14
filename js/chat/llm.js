@@ -66,20 +66,21 @@ export class LLM {
         
         log(`loading... ${model.name},  ${provider}`);
 
-        const model_bytes_1 = await fetchAndCache(model_path + model_file_1);
+        // const model_bytes_1 = await fetchAndCache(model_path + model_file_1);
         // const externaldata_1 = (model.externaldata) ? await fetchAndCache(model_path + model_file_1 + '.data') : false;
-        const externaldata_1 = model_path + model_file_1 + '.data'
+        const model_bytes_1 = model_path + model_file_1;
+        const externaldata_1 = model_path + model_file_1 + '.data';
         // const model_bytes_2 = await fetchAndCache(model_path + model_file_2);
         // const externaldata_2 = (model.externaldata) ? await fetchAndCache(model_path + model_file_2 + '.data') : false; 
-        let modelSize_1 = model_bytes_1.byteLength;
+        // let modelSize_1 = model_bytes_1.byteLength;
         // let modelSize_2 = model_bytes_2.byteLength;
-        if (externaldata_1) {
-            modelSize_1 += externaldata_1.byteLength;
-        }
+        // if (externaldata_1) {
+        //     modelSize_1 += externaldata_1.byteLength;
+        // }
         // if (externaldata_2) {
         //     modelSize_2 += externaldata_2.byteLength;
         // }
-        log(`model 1 size ${Math.round(modelSize_1 / 1024 / 1024)} MB`);
+        // log(`model 1 size ${Math.round(modelSize_1 / 1024 / 1024)} MB`);
         // log(`model 2 size ${Math.round(modelSize_2 / 1024 / 1024)} MB`);
 
         const opt_1 = {
@@ -136,7 +137,8 @@ export class LLM {
             ort.env.webgpu.profiling.mode = 'default';
         }
 
-        this.sess_1 = await ort.InferenceSession.create(model_bytes_1, opt_1);
+        this.sess_1 = await ort.InferenceSession.create(
+            model_bytes_1, opt_1);
         // this.sess_2 = await ort.InferenceSession.create(model_bytes_2, opt_2);
         this.sess_2 = undefined;
         this.eos = 50256;
