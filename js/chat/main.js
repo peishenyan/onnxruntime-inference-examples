@@ -1,6 +1,6 @@
-import { env, AutoTokenizer } from '@xenova/transformers';
+import { env, AutoTokenizer } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
 import { LLM } from './llm.js';
-import { marked } from 'marked';
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 
 const MODELS = {
